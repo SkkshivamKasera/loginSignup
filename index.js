@@ -3,8 +3,9 @@ const { body, validationResult } = require('express-validator')
 const bcryptjs = require('bcryptjs')
 const mongoose = require('mongoose')
 const Users = require('./Users')
+require('dotenv').config()
 
-const url = "mongodb+srv://database:Shivam@cluster0.9ardu0g.mongodb.net/?retryWrites=true&w=majority"
+url = process.env.DATABASE_URL
 try{
     mongoose.connect(url)
     console.log('database connected')
