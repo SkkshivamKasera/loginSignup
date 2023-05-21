@@ -3,6 +3,8 @@ const { body, validationResult } = require('express-validator')
 const bcryptjs = require('bcryptjs')
 const mongoose = require('mongoose')
 const Users = require('./Users')
+const body_parser = require('body-parser')
+const cors = require('cors')
 require('dotenv').config()
 
 const url = process.env.DATABASE_URL
@@ -16,6 +18,9 @@ try{
 const app = express()
 
 app.use(express.json())
+app.use(body_parser.json())
+app.use(body_parser.urlencoded({extended: true}))
+app.use(cors())
 
 const port = process.env.PORT || 5000
 const success = true
