@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const Users = require('./Users')
 require('dotenv').config()
 
-url = process.env.DATABASE_URL
+const url = process.env.DATABASE_URL
 try{
     mongoose.connect(url)
     console.log('database connected')
@@ -17,8 +17,8 @@ const app = express()
 
 app.use(express.json())
 
-let port = 5000
-let success = true
+const port = process.env.PORT || 5000
+const success = true
 
 app.post('/signup', [
     body('name').isLength({min: 3}),
